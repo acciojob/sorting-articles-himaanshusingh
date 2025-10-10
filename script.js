@@ -19,5 +19,5 @@ function stripArticle(bandName) {
 const sortedBands = bands.sort((a, b) => {
   return stripArticle(a) > stripArticle(b) ? 1 : -1;
 });
-const bandList = document.getElementById("band");
+const bandList = document.getElementById("bands");
 bandList.innerHTML = sortedBands.map((band) => `<li>${band}</li>`).join("");
