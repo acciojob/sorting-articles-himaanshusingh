@@ -13,11 +13,10 @@ const bands = [
   "Anywhere But Here",
   "An Old Dog",
 ];
-function stripArticle(bandName) {
-  return bandName.replace(/^(a|an|the)\s/i, "").trim();
+
+function stripBand(str) {
+  return str.replace(/(a|an|the)\s/i, "").trim();
 }
-const sortedBands = bands.sort((a, b) => {
-  return stripArticle(a) > stripArticle(b) ? 1 : -1;
-});
-const bandList = document.getElementById("bands");
-bandList.innerHTML = sortedBands.map((band) => `<li>${band}</li>`).join("");
+const sortedBands = bands.sort((a, b) => stripBand(a).localeCompare(stripBand(b)));
+const bandsElem = document.querySelector("#bands");
+bandsElem.innerHTML = sortedBands.map((val) => `<li>${val}</li>`).join("\n");
